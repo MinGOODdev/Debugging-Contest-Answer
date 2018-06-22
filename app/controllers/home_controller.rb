@@ -8,9 +8,6 @@ class HomeController < ApplicationController
   end
 
   def new
-  end
-  
-  def create
     @post = Post.new
     @post.title = params[:post_title]
     @post.content = params[:post_content]
@@ -31,6 +28,9 @@ class HomeController < ApplicationController
     
     redirect_to '/home/index'
   end
+  
+  def create
+  end
 
   def edit
     @post = Post.find(params[:post_id])
@@ -40,24 +40,22 @@ class HomeController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.title = params[:post_title]
     @post.content = params[:post_content]
-    @post.user_id = current_user.id
     @post.hashtags.clear
       
       hashtags = params[:hashtags].split(',')
       hashtags.each do |tag|
-        hashtag = Hashtag.find_or_create_by(name: tag.delete('#'))
+        hashtag = Hashtag.find_or_craete_by(name: tag.delete('#'))
         hashtag.save
         @post.hashtags << hashtag
       end
     
-    @post.save
     
     redirect_to '/home/index'
   end
   
   def delete
     post = Post.find(params[:post_id])
-    post.destroy
+    post.save
     
     redirect_to '/home/index'
   end

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.new
+    @comment = comment.new
     @comment.post_id = params[:post_id]
     @comment.content = params[:comment]
     @comment.save
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def delete
-    comment = Comment.find(params[:comment_id])
+    comment = comment.find(params[:comment_id])
     comment.destroy
     
     redirect_to '/'

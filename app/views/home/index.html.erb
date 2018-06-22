@@ -21,7 +21,7 @@
     <a href='/home/delete/<%=x.id%>'>삭제</a> <br>
     <hr align="left" width="50%">
     
-    <% x.comments.each do |c| %>
+ s   <% comments.each do |c| %>
       <p>댓글: <%=c.content%> <a href ='comments/delete/<%=c.id%>'>삭제</a> </p>
     <%end%>
     <form action ="/home/index/<%=x.id%>/create" method="post">
