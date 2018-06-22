@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Home#index</h1>
+  <h2>Hello <%= current_user.name %></h2>
+  <a href="/users/sign_out">로그아웃</a>
+  <a href="/home/new">새로운 글 쓰기</a> <br>
+  <hr>
+  
+  <% @posts.each do |x| %>
+    <p>글쓴이: <%=x.user.name%></p>
+    <p>이메일: <%=x.user.email%></p>
+    <p>제목: <%=x.title%></p>
+    <% unless x.img_url.nil? %>
+      사진: <br> <img src="<%=x.img_url%>">
+    <%end%>
+    <p>내용: <%=x.content%></p>
+    Hashtag: <% x.hashtags.each do |tag| %>
+      <%= tag.name %>
+    <%end%> <br>
+    <br>
+    <a href='/home/edit/<%=x.id%>'>수정</a>
+    <a href='/home/delete/<%=x.id%>'>삭제</a> <br>
+    <hr align="left" width="50%">
+    
+    <% x.comments.each do |c| %>
+      <p>댓글: <%=c.content%> <a href ='comments/delete/<%=c.id%>'>삭제</a> </p>
+    <%end%>
+    <form action ="/home/index/<%=x.id%>/create" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type='textarea' name='comment' placeholder="댓글입력">
+      <input type='submit' value='댓글등록'>
+    </form>
+    <hr align="left" width="80%">
+    
+  <%end%>
+</div>
