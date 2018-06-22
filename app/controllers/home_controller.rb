@@ -40,6 +40,7 @@ class HomeController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.title = params[:post_title]
     @post.content = params[:post_content]
+    @post.user_id = current_user.id
     @post.hashtags.clear
       
       hashtags = params[:hashtags].split(',')
