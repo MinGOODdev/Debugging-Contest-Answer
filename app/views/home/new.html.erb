@@ -1,15 +1,18 @@
 <div class="container">
   <hr>
-  <form action='/home/create' method='posts' enctype='multipart/form-data'>
+  <!--<form action='/home/create' method='posts' enctype='multipart/form-data'>-->
+  <form action='/home/create' method='post' enctype='multipart/form-data'>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class="form-group">
       <label for="exampleInputEmail1">제목</label>
-      <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter Title"/>
+      <!--<input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter Title"/>-->
+      <input type="text" name="post_title" class="form-control" id="exampleInputEmail1" placeholder="Enter Title"/>
     </div>
     
     <div class="form-group">
       <label for="exampleFormControlTextarea1">내용</label>
-      <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <!--<textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+      <textarea name="post_content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     
     <div class="form-group">

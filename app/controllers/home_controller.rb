@@ -6,8 +6,12 @@ class HomeController < ApplicationController
       redirect_to '/users/sign_in'
     end
   end
-
+  
   def new
+    #debug : new <-> create (swap)
+  end
+
+  def create
     @post = Post.new
     @post.title = params[:post_title]
     @post.content = params[:post_content]
@@ -28,9 +32,6 @@ class HomeController < ApplicationController
     
     redirect_to '/home/index'
   end
-  
-  def create
-  end
 
   def edit
     @post = Post.find(params[:post_id])
@@ -50,13 +51,16 @@ class HomeController < ApplicationController
         @post.hashtags << hashtag
       end
     
+    @post.save #debug
     
     redirect_to '/home/index'
   end
   
   def delete
     post = Post.find(params[:post_id])
-    post.save
+    
+    #post.save
+    post.destroy
     
     redirect_to '/home/index'
   end

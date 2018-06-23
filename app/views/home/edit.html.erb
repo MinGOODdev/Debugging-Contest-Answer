@@ -1,7 +1,8 @@
 <div class="container">
   <hr>
   <h2>Edit</h2>
-  <form action="/home/update/<%= @post.id %>" method="post" enctype='multipart/form_data'>
+  <!--<form action="/home/update/<%= @post.id %>" method="post" enctype='multipart/form_data'>-->
+  <form action="/home/update/<%= @post.id %>" method="post" enctype='multipart/form-data'>
     <div class="form-group">
       <label for="exampleInputEmail1">제목</label>
       <input type="text" name="post_title" value="<%= @post.title %>"
