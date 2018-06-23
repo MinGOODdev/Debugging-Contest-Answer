@@ -46,7 +46,8 @@ class HomeController < ApplicationController
       
       hashtags = params[:hashtags].split(',')
       hashtags.each do |tag|
-        hashtag = Hashtag.find_or_craete_by(name: tag.delete('#'))
+        #hashtag = Hashtag.find_or_craete_by(name: tag.delete('#'))
+        hashtag = Hashtag.find_or_create_by(name: tag.delete('#'))
         hashtag.save
         @post.hashtags << hashtag
       end
