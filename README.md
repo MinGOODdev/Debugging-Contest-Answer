@@ -81,5 +81,5 @@
 ### 14. 댓글 생성 및 삭제 불가
 * routes.rb
     * comments#(create, delete)
-* Comment_controller.rb
+* comment_controller.rb
     * Comment.new & Comment.find
